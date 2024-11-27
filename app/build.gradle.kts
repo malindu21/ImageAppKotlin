@@ -86,4 +86,7 @@ dependencies {
 
     // ViewModel for state management
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+
+    implementation("androidx.exifinterface:exifinterface:1.3.6")
+
 }

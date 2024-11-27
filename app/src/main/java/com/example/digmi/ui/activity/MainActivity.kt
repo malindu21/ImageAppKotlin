@@ -125,6 +125,8 @@ fun NavGraphBuilder.addScreens(
                     Log.e("MainActivity", "URI is null, cannot take picture")
                 } // Launch camera with the URI
             },
+
+
             onCancel = { imageUploadViewModel.cancelImageSelection() },
             imageUrl = imageUploadViewModel.imageUrl.value,
             isUploading = imageUploadViewModel.isUploading.value,

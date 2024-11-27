@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -126,23 +127,36 @@ fun ImageUploadScreen(
                         )
                     }
                 }
-
+                val context = LocalContext.current
                 if (selectedImageUri != null) {
                     Button(
-                        onClick = { imageUploadViewModel.uploadSelectedImage() },
+                        onClick = {
+                            if (!isUploading) {
+                                imageUploadViewModel.uploadSelectedImage(context)
+                            }
+                            },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp, vertical = 8.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor =  colorResource(id = R.color.button_purple),
-                            contentColor = Color.White
-                        )
+                            containerColor = if (isUploading) {
+                                // Set disabled color when uploading
+                                colorResource(id = R.color.button_disabled)
+                            } else {
+                                // Regular color when not uploading
+                                colorResource(id = R.color.button_purple)
+                            },
+                            contentColor = if (isUploading) {
+                                // Adjust text color when disabled
+                                Color.Gray
+                            } else {
+                                Color.White
+                            }
+                        ),
+                        enabled = !isUploading
                     ) {
                         if (isUploading) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(24.dp),
-                                color = Color.White
-                            )
+                            Text("Uploading Image...")
                         } else {
                             Text("Upload Image")
                         }
