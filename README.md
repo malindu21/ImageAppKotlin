@@ -12,9 +12,9 @@ Display Uploaded Photos: The app fetches and displays the uploaded images from F
 
 ## Sample Screenshots :
 
+<img src="https://github.com/user-attachments/assets/a37d04fb-15cd-40c3-87f4-bf209533b1c0" width="200">
 <img src="https://github.com/user-attachments/assets/d0fc5b7e-0631-4d1a-87a3-920b3aca278e" width="200">
 <img src="https://github.com/user-attachments/assets/6eef4090-b58d-4fb5-92b6-67f1c468e92e" width="200">
-<img src="https://github.com/user-attachments/assets/a37d04fb-15cd-40c3-87f4-bf209533b1c0" width="200">
 <img src="https://github.com/user-attachments/assets/ba038b8a-2182-41d2-a461-092eb851ffb1" width="200">
 
 
