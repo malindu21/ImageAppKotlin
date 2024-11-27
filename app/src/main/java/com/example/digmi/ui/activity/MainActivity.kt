@@ -36,25 +36,23 @@ import okio.IOException
 
 class MainActivity : ComponentActivity() {
     private val imageUploadViewModel: ImageUploadViewModel = ImageUploadViewModel()
-
     // Use state for URI
     private var uriToUpload = mutableStateOf<Uri?>(null)
 
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
             uriToUpload.value = it
-            imageUploadViewModel.setImageUri(it)  // Set the URI instead of uploading
+            imageUploadViewModel.setImageUri(it)  // Set the URI image
         }
     }
 
     private val takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
         if (isSuccess) {
             uriToUpload.value?.let {
-                imageUploadViewModel.setImageUri(it)  // Set the URI instead of uploading
+                imageUploadViewModel.setImageUri(it)  // Set the URI image
             }
         }
     }
-
 
     private fun setupUriForCamera() {
         val imageFile = createImageFile()
@@ -91,9 +89,6 @@ class MainActivity : ComponentActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             requestCameraPermissionLauncher.launch(Manifest.permission.CAMERA)
-        } else {
-            // If camera permission is already granted, request storage permission
-            //requestStoragePermission()
         }
 
         setContent {
@@ -150,12 +145,11 @@ fun NavGraphBuilder.addScreens(
     }
 }
 
-
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
     NavigationBar(
         containerColor = Color.White,
-        contentColor = Color(0xFF6200EE) // Purple accent color
+        contentColor = Color(0xFF6200EE)
     ) {
         val items = listOf(
             NavigationItem("add_photos", "Add Photos", painterResource(id = R.drawable.ic_gallary)),

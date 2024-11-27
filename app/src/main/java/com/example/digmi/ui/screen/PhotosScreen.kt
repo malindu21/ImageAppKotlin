@@ -47,10 +47,9 @@ fun PhotosScreen(navController: NavController, viewModel: ViewPhotosViewModel = 
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()
-                          // Set background to white
-                            .padding(16.dp), // Optional padding to provide some space around the text
-                        color = Color.Black, // Set font color to black
-                        fontWeight = FontWeight.Bold // Make the font bold
+                            .padding(16.dp),
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold
                     )
 
                 },
@@ -84,8 +83,6 @@ fun PhotosScreen(navController: NavController, viewModel: ViewPhotosViewModel = 
                                     // Navigate to the full image view
                                     println("Navigating to: full_image/${Uri.encode(photo)}")
                                     navController.navigate("full_image/${Uri.encode(photo)}")
-
-
                                 })
                             }
                         }
